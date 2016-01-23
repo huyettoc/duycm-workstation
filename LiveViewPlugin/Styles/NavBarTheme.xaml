@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+                    xmlns:dxnt="http://schemas.devexpress.com/winfx/2008/xaml/navbar/themekeys"
+                    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+                    xmlns:dxcn="clr-namespace:DevExpress.Xpf.Core.Native;assembly=DevExpress.Xpf.Core.v12.2">
+    
+    <ControlTemplate x:Key="{dxnt:CommonElementsThemeKey ResourceKey=GroupHeaderTemplate}" TargetType="dxn:NavBarGroupHeader">
+        <Border BorderBrush="Black" BorderThickness="0" Padding="0">
+            <Grid >
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,0.6">
+                        <GradientStop Color="#484848" Offset="0.5"></GradientStop>
+                        <GradientStop Color="Black" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <dxn:ImageAndTextContentPresenter ImageFallbackSize="20" x:Name="groupHeaderLabel" Style="{DynamicResource {dxnt:NavBarGroupControlThemeKey ResourceKey=HeaderStyle}}" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25" Content="{Binding}" Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <dxn:ExplorerBarExpandButton Margin="0,0,0,0" x:Name="explorerBarExpandButton" VerticalAlignment="Stretch" Grid.Column="1" dxcn:RoutedCommandHelper.CommandParameter="{Binding}" />
+                <dxn:NavPaneExpandButton Margin="0,0,0,0" x:Name="navPaneExpandButton" VerticalAlignment="Stretch" Grid.Column="1" Visibility="Collapsed" dxcn:RoutedCommandHelper.CommandParameter="{Binding}" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <!--<ControlTemplate x:Key="{dxnt:CommonElementsThemeKey ResourceKey=GroupItemsContainerTemplate}" TargetType="{x:Type ContentControl}">
+        <Border x:Name="border" BorderThickness="1,0,1,0" SnapsToDevicePixels="True" Background="Black">
+            <dxn:ScrollableContentControl x:Name="scrollableContent" Style="{DynamicResource {dxnt:CommonElementsThemeKey ResourceKey=GroupScrollableContentControlStyle}}">
+                <ContentPresenter x:Name="content" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+            </dxn:ScrollableContentControl>
+        </Border>
+        
+    </ControlTemplate>-->
+
+    <ControlTemplate x:Key="{dxnt:CommonElementsThemeKey ResourceKey=GroupItemsContainerTemplate}" TargetType="ContentControl">
+        <Border Name="border">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#282828 " Offset="0.5" />
+                    <GradientStop Color="#404040" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <ContentPresenter Margin="1,1,1,0" x:Name="content" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="dxn:NavBarViewBase.NavBarViewKind" Value="SideBar">
+                <Setter Property="BorderThickness" TargetName="border" Value="1,0,1,1"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{dxnt:CommonElementsThemeKey ResourceKey=ItemTemplate, IsThemeIndependent=True}" TargetType="{x:Type dxn:NavBarItemControl}">
+        <Grid x:Name="grid" Background="Transparent" Margin="1,0,1,1">
+            <ContentPresenter x:Name="item"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Transparent" TargetName="grid"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent" TargetName="grid"/>
+            </Trigger>
+            <DataTrigger Binding="{Binding Path=IsSelected}" Value="true">
+                <Setter Property="Background" Value="Transparent" TargetName="grid"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IsEnabled}" Value="false">
+                <Setter Property="Opacity" Value="0.5"/>
+            </DataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

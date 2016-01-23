@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="LiveViewPlugin.View.CentreScreenVideo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:view="clr-namespace:LiveViewPlugin.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Grid.Column="1" ShowGridLines="True" Name="grCentreScreen" >
+        <!--<Grid.ColumnDefinitions>
+               <ColumnDefinition x:Name="col1" Width="*"/>
+               <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" x:Name="row1"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>-->
+        <!--<Canvas x:Name="cvsVideo1" Background="Transparent" AllowDrop="True"
+                    DragOver="CvsVideo1_OnDragOver"
+                    Drop="CvsVideo1_OnDrop">
+                <Image Name="imVideo" Stretch="Fill" Source="../Images/KeyComputer.png" Height="{Binding ElementName=cvsVideo1,Path=ActualHeight}" Width="{Binding ElementName=cvsVideo1,Path=ActualWidth}"></Image>
+                <Label Foreground="White"  Name="tblcameName" Background="Transparent" Height="25" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top">hello</Label>
+            </Canvas>
+            <Canvas x:Name="cvsVideo2" Background="Transparent" AllowDrop="True" Grid.Column="1"
+                    DragOver="CvsVideo2_OnDragOver"
+                    Drop="CvsVideo2_OnDrop">
+                <Image Name="imVideo2" Stretch="Fill" Source="../Images/KeyComputer.png" Height="{Binding ElementName=cvsVideo2,Path=ActualHeight}" Width="{Binding ElementName=cvsVideo2,Path=ActualWidth}"></Image>
+                <Label Foreground="White"  Name="tblcameName2" Background="Transparent" Height="25" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top">hello</Label>
+            </Canvas>-->
+        <!--<view:VideoScreenUserControl  Grid.Row="0" Grid.Column="0" x:Name="ucVideoScreen1"/>
+        <view:VideoScreenUserControl  Grid.Row="0" Grid.Column="1" x:Name="ucVideoScreen2"/>
+        <view:VideoScreenUserControl  Grid.Column="0" Grid.Row="1" x:Name="ucVideoScreen3"/>
+        <view:VideoScreenUserControl  Grid.Row="1" Grid.Column="1" x:Name="ucVideoScreen4"/>-->
+    </Grid>
+</UserControl>

@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cctvModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="its_cam_group">
+    <Key>
+      <PropertyRef Name="group_id" />
+    </Key>
+    <Property Name="group_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_event">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="Byte" />
+    <Property Name="subtype" Type="SByte" />
+    <Property Name="cameraid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imgurl1" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="imgurl2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="imgurl3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="videourl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_event_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="lane" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="speed" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="occupancy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="length" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="width" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="classes" Type="SByte" Nullable="false" />
+    <Property Name="height" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="class_vehicle" Type="SByte" />
+    <Property Name="method" Type="SByte" />
+    <Property Name="density" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="v85" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="class_traffic_flow" Type="SByte" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="period" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="anpr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="anpr_confidence" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="traffic_class_confidence" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_event_lookup_car">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="vehicle_group" Type="Int32" />
+    <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="vitype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_ipdec_screen">
+    <Key>
+      <PropertyRef Name="screenid" />
+    </Key>
+    <Property Name="screenid" Type="SByte" Nullable="false" />
+    <Property Name="layout" Type="SByte" />
+  </EntityType>
+  <EntityType Name="its_user">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fullname" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sex" Type="Int32" Nullable="false" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="currenttime" Type="DateTime" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_user_action">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="action" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_user_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_vehicle_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_vos_sources">
+    <Key>
+      <PropertyRef Name="cameraip" />
+    </Key>
+    <Property Name="cameraip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="inputurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="inputname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="outputurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="outputframewidth" Type="Int32" />
+    <Property Name="outputframeheight" Type="Int32" />
+    <Property Name="outputcodec" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="outputframerate" Type="Int32" />
+    <Property Name="status" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_vos_text_position">
+    <Key>
+      <PropertyRef Name="laneidpos" />
+    </Key>
+    <Property Name="laneidpos" Type="Int32" Nullable="false" />
+    <Property Name="staffnamepos" Type="Int32" />
+    <Property Name="timestamppos" Type="Int32" />
+    <Property Name="vehicleclasspos" Type="Int32" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="platenumber" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_cam_type">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="alias" />
+    </Key>
+    <Property Name="id" Type="SByte" Nullable="false" />
+    <Property Name="alias" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_event_subtype">
+    <Key>
+      <PropertyRef Name="event_type" />
+      <PropertyRef Name="subevent_id" />
+    </Key>
+    <Property Name="event_type" Type="Int32" Nullable="false" />
+    <Property Name="subevent_id" Type="Int32" Nullable="false" />
+    <Property Name="subevent_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_event_type">
+    <Key>
+      <PropertyRef Name="type" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="type" Type="SByte" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="term" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_ipdec_session">
+    <Key>
+      <PropertyRef Name="screenid" />
+      <PropertyRef Name="position" />
+    </Key>
+    <Property Name="Id" Type="Int64" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="screenid" Type="Byte" Nullable="false" />
+    <Property Name="position" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_ipdec_sources">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="url" />
+      <PropertyRef Name="state" />
+      <PropertyRef Name="sessioncount" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="state" Type="SByte" Nullable="false" />
+    <Property Name="sessioncount" Type="SByte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_nvr">
+    <Key>
+      <PropertyRef Name="ip" />
+      <PropertyRef Name="capacity" />
+      <PropertyRef Name="currenttime" />
+    </Key>
+    <Property Name="ip" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="capacity" Type="Int64" Nullable="false" />
+    <Property Name="writemode" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="currenttime" Type="DateTime" Nullable="false" />
+    <Property Name="port" Type="Int32" />
+    <Property Name="max_input" Type="Int32" />
+  </EntityType>
+  <EntityType Name="its_nvr_videostorage">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="filename" />
+      <PropertyRef Name="starttime" />
+      <PropertyRef Name="duration" />
+      <PropertyRef Name="filesize" />
+      <PropertyRef Name="ts" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="filename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="starttime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="duration" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="filesize" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ts" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_user_role_action">
+    <Key>
+      <PropertyRef Name="role_id" />
+      <PropertyRef Name="action_id" />
+    </Key>
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+    <Property Name="action_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_vehicle">
+    <Key>
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="type" Type="SByte" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="group_id" Type="Int32" />
+    <Property Name="height" Type="Int32" />
+    <Property Name="width" Type="Int32" />
+    <Property Name="length" Type="Int32" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="cctvEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="its_cam_group" EntityType="Self.its_cam_group" />
+    <EntitySet Name="its_event" EntityType="Self.its_event" />
+    <EntitySet Name="its_event_info" EntityType="Self.its_event_info" />
+    <EntitySet Name="its_event_lookup_car" EntityType="Self.its_event_lookup_car" />
+    <EntitySet Name="its_ipdec_screen" EntityType="Self.its_ipdec_screen" />
+    <EntitySet Name="its_user" EntityType="Self.its_user" />
+    <EntitySet Name="its_user_action" EntityType="Self.its_user_action" />
+    <EntitySet Name="its_user_role" EntityType="Self.its_user_role" />
+    <EntitySet Name="its_vehicle_group" EntityType="Self.its_vehicle_group" />
+    <EntitySet Name="its_vos_sources" EntityType="Self.its_vos_sources" />
+    <EntitySet Name="its_vos_text_position" EntityType="Self.its_vos_text_position" />
+    <EntitySet Name="its_cam_type" EntityType="Self.its_cam_type" />
+    <EntitySet Name="its_event_subtype" EntityType="Self.its_event_subtype" />
+    <EntitySet Name="its_event_type" EntityType="Self.its_event_type" />
+    <EntitySet Name="its_ipdec_session" EntityType="Self.its_ipdec_session" />
+    <EntitySet Name="its_ipdec_sources" EntityType="Self.its_ipdec_sources" />
+    <EntitySet Name="its_nvr" EntityType="Self.its_nvr" />
+    <EntitySet Name="its_nvr_videostorage" EntityType="Self.its_nvr_videostorage" />
+    <EntitySet Name="its_user_role_action" EntityType="Self.its_user_role_action" />
+    <EntitySet Name="its_vehicle" EntityType="Self.its_vehicle" />
+    <FunctionImport Name="sp_checkAccount" EntitySet="its_login" ReturnType="Collection(cctvModel.its_login)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getAllCamera" />
+    <FunctionImport Name="GetAllCamera" ReturnType="Collection(cctvModel.ComplexType1)" />
+    <EntitySet Name="its_event_source" EntityType="cctvModel.its_event_source" />
+    <EntitySet Name="its_cam" EntityType="cctvModel.its_cam" />
+    <EntitySet Name="its_speed_cam" EntityType="cctvModel.its_speed_cam" />
+    <EntitySet Name="its_video_processor" EntityType="cctvModel.its_video_processor" />
+    <FunctionImport Name="Get_CameraUrl">
+      <Parameter Name="eventtype" Mode="In" Type="SByte" />
+      <Parameter Name="camid" Mode="In" Type="String" />
+      <Parameter Name="timeget" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetCambyID">
+      <Parameter Name="Idcam" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="its_login" EntityType="cctvModel.its_login" />
+    <EntitySet Name="its_vms_resource" EntityType="cctvModel.its_vms_resource" />
+    <EntitySet Name="its_vms_resource_type" EntityType="cctvModel.its_vms_resource_type" />
+    <EntitySet Name="its_vms_type" EntityType="cctvModel.its_vms_type" />
+    <EntitySet Name="its_video_processing" EntityType="cctvModel.its_video_processing" />
+    <FunctionImport Name="sp_GetAllVms_Resource" />
+    <EntitySet Name="its_vms" EntityType="cctvModel.its_vms" />
+  </EntityContainer>
+  <ComplexType Name="ComplexType1">
+    <Property Type="String" Name="id" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Type="SByte" Name="type" Nullable="false" />
+    <Property Type="String" Name="ip" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="cameraurl" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="group_name" MaxLength="255" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <EntityType Name="its_event_source">
+    <Key>
+      <PropertyRef Name="cam_id" />
+    </Key>
+    <Property Name="cam_id" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="SByte" />
+    <Property Name="video_processor_ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="video_output_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="image_output_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_cam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="SByte" Nullable="false" />
+    <Property Name="ip" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="viewurl" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="recordurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cameraurl" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="recordmode" Type="Int32" Nullable="false" />
+    <Property Name="cliplength" Type="Int32" Nullable="false" />
+    <Property Name="clipremovetime" Type="Int32" Nullable="false" />
+    <Property Name="user" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="position" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="brand" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="eventmode" Type="Int32" />
+    <Property Name="group_id" Type="Int32" />
+    <Property Name="nvr_ip" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_speed_cam">
+    <Key>
+      <PropertyRef Name="ip" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="ip" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="SByte" />
+    <Property Name="location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="power" Type="SByte" />
+    <Property Name="network" Type="SByte" />
+  </EntityType>
+  <EntityType Name="its_video_processor">
+    <Key>
+      <PropertyRef Name="ip" />
+    </Key>
+    <Property Name="ip" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="passwork" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="config_port" Type="Int32" />
+    <Property Name="stream_number" Type="Int32" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_login">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="currenttime" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_vms_resource">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="data" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="nameimage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_vms_resource_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_vms_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_video_processing">
+    <Key>
+      <PropertyRef Name="camera_id" />
+    </Key>
+    <Property Name="video_processor_ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="stream_index" Type="Int32" />
+    <Property Name="camera_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int64" />
+    <Property Name="video_output_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="image_output_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="its_vms">
+    <Key>
+      <PropertyRef Name="ip" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="ip" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="port" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="Int32" />
+    <Property Name="width" Type="Int32" />
+    <Property Name="height" Type="Int32" />
+    <Property Name="location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

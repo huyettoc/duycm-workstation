@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AA732BF2-278A-4EBB-9824-3246535A0B16}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PlaybackPlugin</RootNamespace>
+    <AssemblyName>PlaybackPlugin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\AddIns\PlaybackPlugin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Core.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.NavBar.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity.EF5, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MySQL\Connector NET 6.8.3\Assemblies\v4.5\MySql.Data.Entity.EF5.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.AddIn" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityFramework\cctvModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cctvModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\cctvModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\cctvModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cctvModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ComplexType1.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_cam.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_cam_group.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_cam_type.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_axis.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_info.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_lookup_car.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_source.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_subtype.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_type.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_ipdec_screen.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_ipdec_session.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_ipdec_sources.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_login.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_nvr.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_nvr_videostorage.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_speed_cam.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_action.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_role.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_role_action.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vehicle.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vehicle_group.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_video_processing.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_video_processor.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms_resource.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms_resource_type.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms_type.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vos_sources.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vos_text_position.cs">
+      <DependentUpon>cctvModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CameraGroup.cs" />
+    <Compile Include="Model\CameraItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\TreeViewItemBehavior.cs" />
+    <Compile Include="ViewModel\CameraGroupViewModel.cs" />
+    <Compile Include="ViewModel\CameraItemViewModel.cs" />
+    <Compile Include="ViewModel\HighCameraGroupViewModel.cs" />
+    <Compile Include="ViewModel\ScreenTypeViewModel.cs" />
+    <Compile Include="ViewModel\VideoScreenViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\PlaybackUsercontrol.xaml.cs">
+      <DependentUpon>PlaybackUsercontrol.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\folderclosed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Styles\NavBarTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CommonTreeViewStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PlaybackUsercontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PluginStructure\AddInView\AddInView.csproj">
+      <Project>{5ebfaf6b-7051-437f-9e78-b1fd01327117}</Project>
+      <Name>AddInView</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\openfolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EntityFramework\cctvModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>cctvModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="EntityFramework\cctvModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>cctvModel.edmx</DependentUpon>
+      <LastGenOutput>cctvModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EntityFramework\cctvModel.edmx.diagram">
+      <DependentUpon>cctvModel.edmx</DependentUpon>
+    </None>
+    <None Include="EntityFramework\cctvModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>cctvModel.edmx</DependentUpon>
+      <LastGenOutput>cctvModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

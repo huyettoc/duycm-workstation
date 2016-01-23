@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cctvModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="its_cam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="type" Type="tinyint" Nullable="false" />
+    <Property Name="ip" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="viewurl" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="recordurl" Type="varchar" MaxLength="255" />
+    <Property Name="cameraurl" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="recordmode" Type="int" Nullable="false" />
+    <Property Name="cliplength" Type="int" Nullable="false" />
+    <Property Name="clipremovetime" Type="int" Nullable="false" />
+    <Property Name="user" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="position" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="brand" Type="varchar" MaxLength="255" />
+    <Property Name="group_id" Type="int" />
+    <Property Name="nvr_ip" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="its_cam_group">
+    <Key>
+      <PropertyRef Name="group_id" />
+    </Key>
+    <Property Name="group_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="group_name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_cam_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="its_cam_type">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="alias" />
+    </Key>
+    <Property Name="id" Type="tinyint" Nullable="false" />
+    <Property Name="alias" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="its_event">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="utinyint" />
+    <Property Name="subtype" Type="tinyint" />
+    <Property Name="cameraid" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="time" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="imgurl1" Type="varchar" MaxLength="400" />
+    <Property Name="imgurl2" Type="varchar" MaxLength="255" />
+    <Property Name="imgurl3" Type="varchar" MaxLength="255" />
+    <Property Name="videourl" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_event_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="lane" Type="char" MaxLength="11" />
+    <Property Name="speed" Type="char" MaxLength="11" />
+    <Property Name="occupancy" Type="char" MaxLength="20" />
+    <Property Name="length" Type="char" MaxLength="11" />
+    <Property Name="width" Type="char" MaxLength="11" />
+    <Property Name="classes" Type="tinyint" Nullable="false" />
+    <Property Name="height" Type="char" MaxLength="11" />
+    <Property Name="class_vehicle" Type="tinyint" />
+    <Property Name="method" Type="tinyint" />
+    <Property Name="density" Type="char" MaxLength="20" />
+    <Property Name="v85" Type="char" MaxLength="20" />
+    <Property Name="class_traffic_flow" Type="tinyint" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+    <Property Name="period" Type="char" MaxLength="20" />
+    <Property Name="anpr" Type="varchar" MaxLength="30" />
+    <Property Name="anpr_confidence" Type="char" MaxLength="10" />
+    <Property Name="traffic_class_confidence" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="its_event_lookup_car">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="vehicle_group" Type="int" />
+    <Property Name="type" Type="varchar" MaxLength="255" />
+    <Property Name="vitype" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_event_source">
+    <Key>
+      <PropertyRef Name="cam_id" />
+    </Key>
+    <Property Name="cam_id" Type="int" Nullable="false" />
+    <Property Name="status" Type="tinyint" />
+    <Property Name="video_processor_ip" Type="varchar" MaxLength="255" />
+    <Property Name="video_output_url" Type="varchar" MaxLength="255" />
+    <Property Name="image_output_url" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_event_subtype' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="its_event_subtype">
+    <Key>
+      <PropertyRef Name="event_type" />
+      <PropertyRef Name="subevent_id" />
+    </Key>
+    <Property Name="event_type" Type="int" Nullable="false" />
+    <Property Name="subevent_id" Type="int" Nullable="false" />
+    <Property Name="subevent_name" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_event_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="its_event_type">
+    <Key>
+      <PropertyRef Name="type" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="type" Type="tinyint" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="term" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_ipdec_screen">
+    <Key>
+      <PropertyRef Name="screenid" />
+    </Key>
+    <Property Name="screenid" Type="tinyint" Nullable="false" />
+    <Property Name="layout" Type="tinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_ipdec_session' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="its_ipdec_session">
+    <Key>
+      <PropertyRef Name="screenid" />
+      <PropertyRef Name="position" />
+    </Key>
+    <Property Name="Id" Type="uint" />
+    <Property Name="url" Type="varchar" MaxLength="255" />
+    <Property Name="screenid" Type="utinyint" Nullable="false" />
+    <Property Name="position" Type="utinyint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_ipdec_sources' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="its_ipdec_sources">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="url" />
+      <PropertyRef Name="state" />
+      <PropertyRef Name="sessioncount" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="state" Type="tinyint" Nullable="false" />
+    <Property Name="sessioncount" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_login">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="currenttime" Type="timestamp" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_nvr">
+    <Key>
+      <PropertyRef Name="ip" />
+    </Key>
+    <Property Name="ip" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="capacity" Type="bigint" Nullable="false" />
+    <Property Name="writemode" Type="varchar" MaxLength="64" />
+    <Property Name="port" Type="int" />
+    <Property Name="max_input" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_nvr_videostorage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="its_nvr_videostorage">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="filename" />
+      <PropertyRef Name="starttime" />
+      <PropertyRef Name="duration" />
+      <PropertyRef Name="filesize" />
+      <PropertyRef Name="ts" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="filename" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="starttime" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="duration" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="filesize" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ts" Type="timestamp" Precision="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_speed_cam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="its_speed_cam">
+    <Key>
+      <PropertyRef Name="ip" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="16" />
+    <Property Name="ip" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="status" Type="tinyint" />
+    <Property Name="location" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="power" Type="tinyint" />
+    <Property Name="network" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="its_user">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="fullname" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="sex" Type="int" Nullable="false" />
+    <Property Name="birthday" Type="date" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="currenttime" Type="timestamp" Precision="0" Nullable="false" />
+    <Property Name="role" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="its_user_action">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="action" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_user_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_user_role_action' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="its_user_role_action">
+    <Key>
+      <PropertyRef Name="role_id" />
+      <PropertyRef Name="action_id" />
+    </Key>
+    <Property Name="role_id" Type="int" Nullable="false" />
+    <Property Name="action_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_vehicle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="its_vehicle">
+    <Key>
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="type" Type="tinyint" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" />
+    <Property Name="group_id" Type="int" />
+    <Property Name="height" Type="int" />
+    <Property Name="width" Type="int" />
+    <Property Name="length" Type="int" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_vehicle_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_video_processing">
+    <Key>
+      <PropertyRef Name="camera_id" />
+    </Key>
+    <Property Name="video_processor_ip" Type="varchar" MaxLength="255" />
+    <Property Name="stream_index" Type="int" />
+    <Property Name="camera_id" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="status" Type="uint" />
+    <Property Name="video_output_url" Type="varchar" MaxLength="255" />
+    <Property Name="image_output_url" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_video_processor">
+    <Key>
+      <PropertyRef Name="ip" />
+    </Key>
+    <Property Name="ip" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="user" Type="varchar" MaxLength="255" />
+    <Property Name="password" Type="varchar" MaxLength="255" />
+    <Property Name="config_port" Type="int" />
+    <Property Name="stream_number" Type="int" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_vms">
+    <Key>
+      <PropertyRef Name="ip" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="ip" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="port" Type="int" Nullable="false" />
+    <Property Name="type" Type="int" />
+    <Property Name="width" Type="int" />
+    <Property Name="height" Type="int" />
+    <Property Name="location" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_vms_resource">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="data" Type="blob" />
+    <Property Name="nameimage" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_vms_resource_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_vms_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="its_vos_sources">
+    <Key>
+      <PropertyRef Name="cameraip" />
+    </Key>
+    <Property Name="cameraip" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="inputurl" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="inputname" Type="varchar" MaxLength="20" />
+    <Property Name="username" Type="varchar" MaxLength="20" />
+    <Property Name="password" Type="varchar" MaxLength="20" />
+    <Property Name="outputurl" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="outputframewidth" Type="int" />
+    <Property Name="outputframeheight" Type="int" />
+    <Property Name="outputcodec" Type="varchar" MaxLength="10" />
+    <Property Name="outputframerate" Type="int" />
+    <Property Name="status" Type="utinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="its_vos_text_position">
+    <Key>
+      <PropertyRef Name="laneidpos" />
+    </Key>
+    <Property Name="laneidpos" Type="int" Nullable="false" />
+    <Property Name="staffnamepos" Type="int" />
+    <Property Name="timestamppos" Type="int" />
+    <Property Name="vehicleclasspos" Type="int" />
+    <Property Name="price" Type="int" />
+    <Property Name="platenumber" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Function Name="Get_CameraUrl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv">
+    <Parameter Name="eventtype" Type="tinyint" Mode="In" />
+    <Parameter Name="camid" Type="char" Mode="In" />
+    <Parameter Name="timeget" Type="char" Mode="In" />
+  </Function>
+  <Function Name="sp_checkAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv">
+    <Parameter Name="name" Type="char" Mode="In" />
+    <Parameter Name="pass" Type="char" Mode="In" />
+  </Function>
+  <Function Name="sp_getAllCamera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv" />
+  <Function Name="sp_GetAllVms_Resource" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv" />
+  <Function Name="sp_GetCambyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv">
+    <Parameter Name="Idcam" Type="char" Mode="In" />
+  </Function>
+  <EntityContainer Name="cctvModelStoreContainer">
+    <EntitySet Name="its_cam" EntityType="Self.its_cam" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_cam_group" EntityType="Self.its_cam_group" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_event" EntityType="Self.its_event" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_event_info" EntityType="Self.its_event_info" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_event_lookup_car" EntityType="Self.its_event_lookup_car" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_event_source" EntityType="Self.its_event_source" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_ipdec_screen" EntityType="Self.its_ipdec_screen" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_login" EntityType="Self.its_login" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_nvr" EntityType="Self.its_nvr" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_user" EntityType="Self.its_user" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_user_action" EntityType="Self.its_user_action" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_user_role" EntityType="Self.its_user_role" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_vehicle_group" EntityType="Self.its_vehicle_group" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_video_processing" EntityType="Self.its_video_processing" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_video_processor" EntityType="Self.its_video_processor" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_vms" EntityType="Self.its_vms" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_vms_resource" EntityType="Self.its_vms_resource" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_vms_resource_type" EntityType="Self.its_vms_resource_type" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_vms_type" EntityType="Self.its_vms_type" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_vos_sources" EntityType="Self.its_vos_sources" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_vos_text_position" EntityType="Self.its_vos_text_position" Schema="cctv" store:Type="Tables" />
+    <EntitySet Name="its_cam_type" EntityType="Self.its_cam_type" store:Type="Tables" store:Schema="cctv">
+      <DefiningQuery>SELECT
+`its_cam_type`.`id`, 
+`its_cam_type`.`alias`, 
+`its_cam_type`.`name`
+FROM `its_cam_type` AS `its_cam_type`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="its_event_subtype" EntityType="Self.its_event_subtype" store:Type="Tables" store:Schema="cctv">
+      <DefiningQuery>SELECT
+`its_event_subtype`.`event_type`, 
+`its_event_subtype`.`subevent_id`, 
+`its_event_subtype`.`subevent_name`, 
+`its_event_subtype`.`description`
+FROM `its_event_subtype` AS `its_event_subtype`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="its_event_type" EntityType="Self.its_event_type" store:Type="Tables" store:Schema="cctv">
+      <DefiningQuery>SELECT
+`its_event_type`.`type`, 
+`its_event_type`.`name`, 
+`its_event_type`.`term`
+FROM `its_event_type` AS `its_event_type`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="its_ipdec_session" EntityType="Self.its_ipdec_session" store:Type="Tables" store:Schema="cctv">
+      <DefiningQuery>SELECT
+`its_ipdec_session`.`Id`, 
+`its_ipdec_session`.`url`, 
+`its_ipdec_session`.`screenid`, 
+`its_ipdec_session`.`position`
+FROM `its_ipdec_session` AS `its_ipdec_session`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="its_ipdec_sources" EntityType="Self.its_ipdec_sources" store:Type="Tables" store:Schema="cctv">
+      <DefiningQuery>SELECT
+`its_ipdec_sources`.`name`, 
+`its_ipdec_sources`.`url`, 
+`its_ipdec_sources`.`state`, 
+`its_ipdec_sources`.`sessioncount`
+FROM `its_ipdec_sources` AS `its_ipdec_sources`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="its_nvr_videostorage" EntityType="Self.its_nvr_videostorage" store:Type="Tables" store:Schema="cctv">
+      <DefiningQuery>SELECT
+`its_nvr_videostorage`.`id`, 
+`its_nvr_videostorage`.`filename`, 
+`its_nvr_videostorage`.`starttime`, 
+`its_nvr_videostorage`.`duration`, 
+`its_nvr_videostorage`.`filesize`, 
+`its_nvr_videostorage`.`ts`
+FROM `its_nvr_videostorage` AS `its_nvr_videostorage`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="its_speed_cam" EntityType="Self.its_speed_cam" store:Type="Tables" store:Schema="cctv">
+      <DefiningQuery>SELECT
+`its_speed_cam`.`id`, 
+`its_speed_cam`.`ip`, 
+`its_speed_cam`.`status`, 
+`its_speed_cam`.`location`, 
+`its_speed_cam`.`description`, 
+`its_speed_cam`.`power`, 
+`its_speed_cam`.`network`
+FROM `its_speed_cam` AS `its_speed_cam`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="its_user_role_action" EntityType="Self.its_user_role_action" store:Type="Tables" store:Schema="cctv">
+      <DefiningQuery>SELECT
+`its_user_role_action`.`role_id`, 
+`its_user_role_action`.`action_id`
+FROM `its_user_role_action` AS `its_user_role_action`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="its_vehicle" EntityType="Self.its_vehicle" store:Type="Tables" store:Schema="cctv">
+      <DefiningQuery>SELECT
+`its_vehicle`.`type`, 
+`its_vehicle`.`name`, 
+`its_vehicle`.`group_id`, 
+`its_vehicle`.`height`, 
+`its_vehicle`.`width`, 
+`its_vehicle`.`length`, 
+`its_vehicle`.`description`
+FROM `its_vehicle` AS `its_vehicle`</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

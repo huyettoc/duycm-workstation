@@ -1,0 +1,7 @@
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInView\bin\Release\AddInView.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInView\bin\Release\AddInView.pdb
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInView\obj\Release\AddInView.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInView\obj\Release\AddInView.pdb
+E:\Work\SourceCode\ITSWorkStation\Output\AddInViews\AddInView.dll
+E:\Work\SourceCode\ITSWorkStation\Output\AddInViews\AddInView.pdb
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInView\obj\Release\AddInView.csprojResolveAssemblyReference.cache

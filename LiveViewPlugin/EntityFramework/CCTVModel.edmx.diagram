@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8bf8ec10738b416a939eaf40a515a4c7" Name="Diagram1">
+        <EntityTypeShape EntityType="cctvModel.its_cam_group" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_event" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_event_info" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_event_lookup_car" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_ipdec_screen" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_user" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_user_action" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_user_role" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_vehicle_group" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_vos_sources" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_vos_text_position" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_cam_type" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_event_subtype" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_event_type" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_ipdec_session" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_ipdec_sources" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_nvr" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_nvr_videostorage" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_user_role_action" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_vehicle" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cctvModel.its_event_source" Width="1.5" PointX="11.375" PointY="12.75" />
+        <EntityTypeShape EntityType="cctvModel.its_speed_cam" Width="1.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="cctvModel.its_video_processor" Width="1.5" PointX="4.75" PointY="13.75" />
+        <EntityTypeShape EntityType="cctvModel.its_cam" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="cctvModel.its_login" Width="1.5" PointX="13.375" PointY="7.75" />
+        <EntityTypeShape EntityType="cctvModel.its_vms_resource" Width="1.5" PointX="13.375" PointY="10.75" />
+        <EntityTypeShape EntityType="cctvModel.its_vms_resource_type" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="cctvModel.its_vms_type" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="cctvModel.its_video_processing" Width="1.5" PointX="15.375" PointY="3.75" />
+        <EntityTypeShape EntityType="cctvModel.its_vms" Width="1.5" PointX="7.375" PointY="13.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

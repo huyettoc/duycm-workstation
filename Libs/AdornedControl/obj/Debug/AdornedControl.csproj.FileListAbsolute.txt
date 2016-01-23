@@ -1,0 +1,8 @@
+D:\MvvmExample\SimpleAdornedControlSample\AdornedControl\bin\Debug\AdornedControl.dll
+D:\MvvmExample\SimpleAdornedControlSample\AdornedControl\bin\Debug\AdornedControl.pdb
+D:\MvvmExample\SimpleAdornedControlSample\AdornedControl\obj\Debug\AdornedControl.dll
+D:\MvvmExample\SimpleAdornedControlSample\AdornedControl\obj\Debug\AdornedControl.pdb
+E:\Work\SourceCode\ITSWorkStation\Libs\AdornedControl\bin\Debug\AdornedControl.dll
+E:\Work\SourceCode\ITSWorkStation\Libs\AdornedControl\bin\Debug\AdornedControl.pdb
+E:\Work\SourceCode\ITSWorkStation\Libs\AdornedControl\obj\Debug\AdornedControl.dll
+E:\Work\SourceCode\ITSWorkStation\Libs\AdornedControl\obj\Debug\AdornedControl.pdb

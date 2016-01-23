@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5518C6D0-FA11-4106-9497-A68ABE298552}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LiveViewPlugin</RootNamespace>
+    <AssemblyName>LiveViewPlugin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\AddIns\LiveViewPlugin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\AddIns\LiveViewPlugin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.NavBar.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF5, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.AddIn" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MahApps.Metro.0.14.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityFramework\CCTVModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CCTVModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\CCTVModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\CCTVModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CCTVModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ComplexType1.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_cam.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_cam_group.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_cam_type.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_info.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_lookup_car.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_source.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_subtype.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_type.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_ipdec_screen.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_ipdec_session.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_ipdec_sources.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_login.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_nvr.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_nvr_videostorage.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_speed_cam.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_action.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_role.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_role_action.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vehicle.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vehicle_group.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_video_processing.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_video_processor.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms_resource.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms_resource_type.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms_type.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vos_sources.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vos_text_position.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CameraGroup.cs" />
+    <Compile Include="Model\CameraItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Account.cs" />
+    <Compile Include="Utils\ImageUtil.cs" />
+    <Compile Include="Utils\Permit.cs" />
+    <Compile Include="Utils\ResourceUtil.cs" />
+    <Compile Include="Utils\TreeViewItemBehavior.cs" />
+    <Compile Include="ViewModel\CameraGroupViewModel.cs" />
+    <Compile Include="ViewModel\CameraItemViewModel.cs" />
+    <Compile Include="ViewModel\HighCameraGroupViewModel.cs" />
+    <Compile Include="ViewModel\ScreenTypeViewModel.cs" />
+    <Compile Include="ViewModel\VideoScreenViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\CentreScreenVideo.xaml.cs">
+      <DependentUpon>CentreScreenVideo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LiveViewUsercontrol.xaml.cs">
+      <DependentUpon>LiveViewUsercontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SpecScreenOne.xaml.cs">
+      <DependentUpon>SpecScreenOne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VideoScreenUserControl.xaml.cs">
+      <DependentUpon>VideoScreenUserControl.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Styles\CommonTreeViewStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\NavBarTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CentreScreenVideo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LiveViewUsercontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SpecScreenOne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VideoScreenUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Camicon.png" />
+    <Resource Include="Images\folderclosed.png" />
+    <Resource Include="Images\openfolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="EntityFramework\CCTVModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CCTVModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityFramework\CCTVModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CCTVModel.edmx</DependentUpon>
+      <LastGenOutput>CCTVModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EntityFramework\CCTVModel.edmx.diagram">
+      <DependentUpon>CCTVModel.edmx</DependentUpon>
+    </None>
+    <None Include="EntityFramework\CCTVModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CCTVModel.edmx</DependentUpon>
+      <LastGenOutput>CCTVModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\KeyComputer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PluginStructure\AddInView\AddInView.csproj">
+      <Project>{5ebfaf6b-7051-437f-9e78-b1fd01327117}</Project>
+      <Name>AddInView</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\iconwattermarkone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\win8Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-bkg_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-down-normal.png" />
+    <Resource Include="Images\Controler\ptz-down-over.png" />
+    <Resource Include="Images\Controler\ptz-left-normal.png" />
+    <Resource Include="Images\Controler\ptz-left-over.png" />
+    <Resource Include="Images\Controler\ptz-right-normal.png" />
+    <Resource Include="Images\Controler\ptz-right-over.png" />
+    <Resource Include="Images\Controler\ptz-up-normal.png" />
+    <Resource Include="Images\Controler\ptz-up-over.png" />
+    <Resource Include="Images\Controler\ptz-zin-normal.png" />
+    <Resource Include="Images\Controler\ptz-zin-over.png" />
+    <Resource Include="Images\Controler\ptz-zout-normal.png" />
+    <Resource Include="Images\Controler\ptz-zout-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\stop1normalorange.png" />
+    <Resource Include="Images\stop1pressedblue .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\do.png" />
+    <Resource Include="Images\xanh.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="cctvModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="its_cam">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="type" Type="tinyint" Nullable="false" />
+          <Property Name="ip" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="viewurl" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="recordurl" Type="varchar" MaxLength="255" />
+          <Property Name="cameraurl" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="recordmode" Type="int" Nullable="false" />
+          <Property Name="cliplength" Type="int" Nullable="false" />
+          <Property Name="clipremovetime" Type="int" Nullable="false" />
+          <Property Name="user" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="position" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="brand" Type="varchar" MaxLength="255" />
+          <Property Name="group_id" Type="int" />
+          <Property Name="nvr_ip" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="its_cam_group">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="group_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_cam_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="its_cam_type">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="alias" />
+          </Key>
+          <Property Name="id" Type="tinyint" Nullable="false" />
+          <Property Name="alias" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="its_event">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="utinyint" />
+          <Property Name="subtype" Type="tinyint" />
+          <Property Name="cameraid" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="time" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="imgurl1" Type="varchar" MaxLength="400" />
+          <Property Name="imgurl2" Type="varchar" MaxLength="255" />
+          <Property Name="imgurl3" Type="varchar" MaxLength="255" />
+          <Property Name="videourl" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_event_axis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="uint" Nullable="false" />
+          <Property Name="cameraid" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="timebegin" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="timeend" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="imgurl" Type="varchar" MaxLength="254" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_event_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="lane" Type="char" MaxLength="11" />
+          <Property Name="speed" Type="char" MaxLength="11" />
+          <Property Name="occupancy" Type="char" MaxLength="20" />
+          <Property Name="length" Type="char" MaxLength="11" />
+          <Property Name="width" Type="char" MaxLength="11" />
+          <Property Name="classes" Type="tinyint" Nullable="false" />
+          <Property Name="height" Type="char" MaxLength="11" />
+          <Property Name="class_vehicle" Type="tinyint" />
+          <Property Name="method" Type="tinyint" />
+          <Property Name="density" Type="char" MaxLength="20" />
+          <Property Name="v85" Type="char" MaxLength="20" />
+          <Property Name="class_traffic_flow" Type="tinyint" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+          <Property Name="period" Type="char" MaxLength="20" />
+          <Property Name="anpr" Type="varchar" MaxLength="30" />
+          <Property Name="anpr_confidence" Type="char" MaxLength="10" />
+          <Property Name="traffic_class_confidence" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="its_event_lookup_car">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="vehicle_group" Type="int" />
+          <Property Name="type" Type="varchar" MaxLength="255" />
+          <Property Name="vitype" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_event_source">
+          <Key>
+            <PropertyRef Name="cam_id" />
+          </Key>
+          <Property Name="cam_id" Type="int" Nullable="false" />
+          <Property Name="status" Type="tinyint" />
+          <Property Name="video_processor_ip" Type="varchar" MaxLength="255" />
+          <Property Name="video_output_url" Type="varchar" MaxLength="255" />
+          <Property Name="image_output_url" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_event_subtype' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="its_event_subtype">
+          <Key>
+            <PropertyRef Name="event_type" />
+            <PropertyRef Name="subevent_id" />
+          </Key>
+          <Property Name="event_type" Type="int" Nullable="false" />
+          <Property Name="subevent_id" Type="int" Nullable="false" />
+          <Property Name="subevent_name" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_event_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="its_event_type">
+          <Key>
+            <PropertyRef Name="type" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="type" Type="tinyint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="term" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_ipdec_screen">
+          <Key>
+            <PropertyRef Name="screenid" />
+          </Key>
+          <Property Name="screenid" Type="tinyint" Nullable="false" />
+          <Property Name="layout" Type="tinyint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_ipdec_session' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="its_ipdec_session">
+          <Key>
+            <PropertyRef Name="screenid" />
+            <PropertyRef Name="position" />
+          </Key>
+          <Property Name="Id" Type="uint" />
+          <Property Name="url" Type="varchar" MaxLength="255" />
+          <Property Name="screenid" Type="utinyint" Nullable="false" />
+          <Property Name="position" Type="utinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_ipdec_sources' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="its_ipdec_sources">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="url" />
+            <PropertyRef Name="state" />
+            <PropertyRef Name="sessioncount" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="url" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="sessioncount" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_login">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="currenttime" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_nvr">
+          <Key>
+            <PropertyRef Name="ip" />
+          </Key>
+          <Property Name="ip" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="capacity" Type="bigint" Nullable="false" />
+          <Property Name="writemode" Type="varchar" MaxLength="64" />
+          <Property Name="port" Type="int" />
+          <Property Name="max_input" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_nvr_videostorage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="its_nvr_videostorage">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="filename" />
+            <PropertyRef Name="starttime" />
+            <PropertyRef Name="duration" />
+            <PropertyRef Name="filesize" />
+            <PropertyRef Name="ts" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="filename" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="starttime" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="duration" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="filesize" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ts" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'def.cctv.its_personal_cam' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="its_personal_cam">
+          <Property Name="camera_id" Type="int" />
+          <Property Name="username" Type="varchar" MaxLength="128" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_speed_cam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="its_speed_cam">
+          <Key>
+            <PropertyRef Name="ip" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="16" />
+          <Property Name="ip" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="status" Type="tinyint" />
+          <Property Name="location" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="power" Type="tinyint" />
+          <Property Name="network" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="its_user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="fullname" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="sex" Type="int" Nullable="false" />
+          <Property Name="birthday" Type="date" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="currenttime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="its_user_action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="action" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_user_role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_user_role_action' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="its_user_role_action">
+          <Key>
+            <PropertyRef Name="role_id" />
+            <PropertyRef Name="action_id" />
+          </Key>
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="action_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.cctv.its_vehicle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="its_vehicle">
+          <Key>
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="type" Type="tinyint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" />
+          <Property Name="group_id" Type="int" />
+          <Property Name="height" Type="int" />
+          <Property Name="width" Type="int" />
+          <Property Name="length" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_vehicle_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_video_processing">
+          <Key>
+            <PropertyRef Name="camera_id" />
+          </Key>
+          <Property Name="video_processor_ip" Type="varchar" MaxLength="255" />
+          <Property Name="stream_index" Type="int" />
+          <Property Name="camera_id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="status" Type="uint" />
+          <Property Name="video_output_url" Type="varchar" MaxLength="255" />
+          <Property Name="image_output_url" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_video_processor">
+          <Key>
+            <PropertyRef Name="ip" />
+          </Key>
+          <Property Name="ip" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="user" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="config_port" Type="int" />
+          <Property Name="stream_number" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_vms">
+          <Key>
+            <PropertyRef Name="ip" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="ip" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="port" Type="int" Nullable="false" />
+          <Property Name="type" Type="int" />
+          <Property Name="width" Type="int" />
+          <Property Name="height" Type="int" />
+          <Property Name="location" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_vms_resource">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="data" Type="blob" />
+          <Property Name="nameimage" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_vms_resource_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_vms_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="its_vos_sources">
+          <Key>
+            <PropertyRef Name="cameraip" />
+          </Key>
+          <Property Name="cameraip" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="inputurl" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="inputname" Type="varchar" MaxLength="20" />
+          <Property Name="username" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+          <Property Name="outputurl" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="outputframewidth" Type="int" />
+          <Property Name="outputframeheight" Type="int" />
+          <Property Name="outputcodec" Type="varchar" MaxLength="10" />
+          <Property Name="outputframerate" Type="int" />
+          <Property Name="status" Type="utinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_vos_text_position">
+          <Key>
+            <PropertyRef Name="laneidpos" />
+          </Key>
+          <Property Name="laneidpos" Type="int" Nullable="false" />
+          <Property Name="staffnamepos" Type="int" />
+          <Property Name="timestamppos" Type="int" />
+          <Property Name="vehicleclasspos" Type="int" />
+          <Property Name="price" Type="int" />
+          <Property Name="platenumber" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Function Name="Get_CameraUrl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv">
+          <Parameter Name="eventtype" Type="tinyint" Mode="In" />
+          <Parameter Name="camid" Type="char" Mode="In" />
+          <Parameter Name="timeget" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_checkAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv">
+          <Parameter Name="name" Type="char" Mode="In" />
+          <Parameter Name="pass" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_getAllCamera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv" />
+        <Function Name="sp_GetAllVms_Resource" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv" />
+        <Function Name="sp_GetCambyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="cctv">
+          <Parameter Name="Idcam" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="cctvModelStoreContainer">
+          <EntitySet Name="its_cam" EntityType="Self.its_cam" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_cam_group" EntityType="Self.its_cam_group" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_event" EntityType="Self.its_event" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_event_axis" EntityType="Self.its_event_axis" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_event_info" EntityType="Self.its_event_info" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_event_lookup_car" EntityType="Self.its_event_lookup_car" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_event_source" EntityType="Self.its_event_source" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_ipdec_screen" EntityType="Self.its_ipdec_screen" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_login" EntityType="Self.its_login" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_nvr" EntityType="Self.its_nvr" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_user" EntityType="Self.its_user" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_user_action" EntityType="Self.its_user_action" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_user_role" EntityType="Self.its_user_role" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_vehicle_group" EntityType="Self.its_vehicle_group" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_video_processing" EntityType="Self.its_video_processing" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_video_processor" EntityType="Self.its_video_processor" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_vms" EntityType="Self.its_vms" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_vms_resource" EntityType="Self.its_vms_resource" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_vms_resource_type" EntityType="Self.its_vms_resource_type" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_vms_type" EntityType="Self.its_vms_type" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_vos_sources" EntityType="Self.its_vos_sources" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_vos_text_position" EntityType="Self.its_vos_text_position" Schema="cctv" store:Type="Tables" />
+          <EntitySet Name="its_cam_type" EntityType="Self.its_cam_type" store:Type="Tables" store:Schema="cctv">
+            <DefiningQuery>SELECT
+`its_cam_type`.`id`, 
+`its_cam_type`.`alias`, 
+`its_cam_type`.`name`
+FROM `its_cam_type` AS `its_cam_type`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="its_event_subtype" EntityType="Self.its_event_subtype" store:Type="Tables" store:Schema="cctv">
+            <DefiningQuery>SELECT
+`its_event_subtype`.`event_type`, 
+`its_event_subtype`.`subevent_id`, 
+`its_event_subtype`.`subevent_name`, 
+`its_event_subtype`.`description`
+FROM `its_event_subtype` AS `its_event_subtype`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="its_event_type" EntityType="Self.its_event_type" store:Type="Tables" store:Schema="cctv">
+            <DefiningQuery>SELECT
+`its_event_type`.`type`, 
+`its_event_type`.`name`, 
+`its_event_type`.`term`
+FROM `its_event_type` AS `its_event_type`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="its_ipdec_session" EntityType="Self.its_ipdec_session" store:Type="Tables" store:Schema="cctv">
+            <DefiningQuery>SELECT
+`its_ipdec_session`.`Id`, 
+`its_ipdec_session`.`url`, 
+`its_ipdec_session`.`screenid`, 
+`its_ipdec_session`.`position`
+FROM `its_ipdec_session` AS `its_ipdec_session`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="its_ipdec_sources" EntityType="Self.its_ipdec_sources" store:Type="Tables" store:Schema="cctv">
+            <DefiningQuery>SELECT
+`its_ipdec_sources`.`name`, 
+`its_ipdec_sources`.`url`, 
+`its_ipdec_sources`.`state`, 
+`its_ipdec_sources`.`sessioncount`
+FROM `its_ipdec_sources` AS `its_ipdec_sources`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="its_nvr_videostorage" EntityType="Self.its_nvr_videostorage" store:Type="Tables" store:Schema="cctv">
+            <DefiningQuery>SELECT
+`its_nvr_videostorage`.`id`, 
+`its_nvr_videostorage`.`filename`, 
+`its_nvr_videostorage`.`starttime`, 
+`its_nvr_videostorage`.`duration`, 
+`its_nvr_videostorage`.`filesize`, 
+`its_nvr_videostorage`.`ts`
+FROM `its_nvr_videostorage` AS `its_nvr_videostorage`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="its_speed_cam" EntityType="Self.its_speed_cam" store:Type="Tables" store:Schema="cctv">
+            <DefiningQuery>SELECT
+`its_speed_cam`.`id`, 
+`its_speed_cam`.`ip`, 
+`its_speed_cam`.`status`, 
+`its_speed_cam`.`location`, 
+`its_speed_cam`.`description`, 
+`its_speed_cam`.`power`, 
+`its_speed_cam`.`network`
+FROM `its_speed_cam` AS `its_speed_cam`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="its_user_role_action" EntityType="Self.its_user_role_action" store:Type="Tables" store:Schema="cctv">
+            <DefiningQuery>SELECT
+`its_user_role_action`.`role_id`, 
+`its_user_role_action`.`action_id`
+FROM `its_user_role_action` AS `its_user_role_action`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="its_vehicle" EntityType="Self.its_vehicle" store:Type="Tables" store:Schema="cctv">
+            <DefiningQuery>SELECT
+`its_vehicle`.`type`, 
+`its_vehicle`.`name`, 
+`its_vehicle`.`group_id`, 
+`its_vehicle`.`height`, 
+`its_vehicle`.`width`, 
+`its_vehicle`.`length`, 
+`its_vehicle`.`description`
+FROM `its_vehicle` AS `its_vehicle`</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cctvModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="its_cam">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="SByte" Nullable="false" />
+          <Property Name="ip" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="viewurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="recordurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cameraurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="recordmode" Type="Int32" Nullable="false" />
+          <Property Name="cliplength" Type="Int32" Nullable="false" />
+          <Property Name="clipremovetime" Type="Int32" Nullable="false" />
+          <Property Name="user" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="position" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="brand" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="group_id" Type="Int32" />
+          <Property Name="nvr_ip" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_cam_group">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="group_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_event">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="Byte" />
+          <Property Name="subtype" Type="SByte" />
+          <Property Name="cameraid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imgurl1" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="imgurl2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imgurl3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="videourl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_event_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="lane" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="speed" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="occupancy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="length" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="width" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="classes" Type="SByte" Nullable="false" />
+          <Property Name="height" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="class_vehicle" Type="SByte" />
+          <Property Name="method" Type="SByte" />
+          <Property Name="density" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="v85" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="class_traffic_flow" Type="SByte" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="period" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="anpr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="anpr_confidence" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="traffic_class_confidence" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_event_lookup_car">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="vehicle_group" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="vitype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_event_source">
+          <Key>
+            <PropertyRef Name="cam_id" />
+          </Key>
+          <Property Name="cam_id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="SByte" />
+          <Property Name="video_processor_ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="video_output_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="image_output_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_ipdec_screen">
+          <Key>
+            <PropertyRef Name="screenid" />
+          </Key>
+          <Property Name="screenid" Type="SByte" Nullable="false" />
+          <Property Name="layout" Type="SByte" />
+        </EntityType>
+        <EntityType Name="its_login">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="currenttime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_nvr">
+          <Key>
+            <PropertyRef Name="ip" />
+          </Key>
+          <Property Name="ip" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="capacity" Type="Int64" Nullable="false" />
+          <Property Name="writemode" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="port" Type="Int32" />
+          <Property Name="max_input" Type="Int32" />
+        </EntityType>
+        <EntityType Name="its_user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fullname" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sex" Type="Int32" Nullable="false" />
+          <Property Name="birthday" Type="DateTime" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="currenttime" Type="DateTime" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_user_action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="action" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_user_role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_vehicle_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_vos_sources">
+          <Key>
+            <PropertyRef Name="cameraip" />
+          </Key>
+          <Property Name="cameraip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="inputurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="inputname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="outputurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="outputframewidth" Type="Int32" />
+          <Property Name="outputframeheight" Type="Int32" />
+          <Property Name="outputcodec" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="outputframerate" Type="Int32" />
+          <Property Name="status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_vos_text_position">
+          <Key>
+            <PropertyRef Name="laneidpos" />
+          </Key>
+          <Property Name="laneidpos" Type="Int32" Nullable="false" />
+          <Property Name="staffnamepos" Type="Int32" />
+          <Property Name="timestamppos" Type="Int32" />
+          <Property Name="vehicleclasspos" Type="Int32" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="platenumber" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_cam_type">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="alias" />
+          </Key>
+          <Property Name="id" Type="SByte" Nullable="false" />
+          <Property Name="alias" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_event_subtype">
+          <Key>
+            <PropertyRef Name="event_type" />
+            <PropertyRef Name="subevent_id" />
+          </Key>
+          <Property Name="event_type" Type="Int32" Nullable="false" />
+          <Property Name="subevent_id" Type="Int32" Nullable="false" />
+          <Property Name="subevent_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_event_type">
+          <Key>
+            <PropertyRef Name="type" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="type" Type="SByte" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="term" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_ipdec_session">
+          <Key>
+            <PropertyRef Name="screenid" />
+            <PropertyRef Name="position" />
+          </Key>
+          <Property Name="Id" Type="Int64" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="screenid" Type="Byte" Nullable="false" />
+          <Property Name="position" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_ipdec_sources">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="url" />
+            <PropertyRef Name="state" />
+            <PropertyRef Name="sessioncount" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="SByte" Nullable="false" />
+          <Property Name="sessioncount" Type="SByte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_nvr_videostorage">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="filename" />
+            <PropertyRef Name="starttime" />
+            <PropertyRef Name="duration" />
+            <PropertyRef Name="filesize" />
+            <PropertyRef Name="ts" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="filename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="starttime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="duration" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="filesize" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ts" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_speed_cam">
+          <Key>
+            <PropertyRef Name="ip" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="SByte" />
+          <Property Name="location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="power" Type="SByte" />
+          <Property Name="network" Type="SByte" />
+        </EntityType>
+        <EntityType Name="its_user_role_action">
+          <Key>
+            <PropertyRef Name="role_id" />
+            <PropertyRef Name="action_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="action_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="its_vehicle">
+          <Key>
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="type" Type="SByte" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="group_id" Type="Int32" />
+          <Property Name="height" Type="Int32" />
+          <Property Name="width" Type="Int32" />
+          <Property Name="length" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_video_processor">
+          <Key>
+            <PropertyRef Name="ip" />
+          </Key>
+          <Property Name="ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="passwork" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="config_port" Type="Int32" />
+          <Property Name="stream_number" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="cctvEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="its_cam" EntityType="Self.its_cam" />
+          <EntitySet Name="its_cam_group" EntityType="Self.its_cam_group" />
+          <EntitySet Name="its_event" EntityType="Self.its_event" />
+          <EntitySet Name="its_event_info" EntityType="Self.its_event_info" />
+          <EntitySet Name="its_event_lookup_car" EntityType="Self.its_event_lookup_car" />
+          <EntitySet Name="its_event_source" EntityType="Self.its_event_source" />
+          <EntitySet Name="its_ipdec_screen" EntityType="Self.its_ipdec_screen" />
+          <EntitySet Name="its_login" EntityType="Self.its_login" />
+          <EntitySet Name="its_nvr" EntityType="Self.its_nvr" />
+          <EntitySet Name="its_user" EntityType="Self.its_user" />
+          <EntitySet Name="its_user_action" EntityType="Self.its_user_action" />
+          <EntitySet Name="its_user_role" EntityType="Self.its_user_role" />
+          <EntitySet Name="its_vehicle_group" EntityType="Self.its_vehicle_group" />
+          <EntitySet Name="its_vos_sources" EntityType="Self.its_vos_sources" />
+          <EntitySet Name="its_vos_text_position" EntityType="Self.its_vos_text_position" />
+          <EntitySet Name="its_cam_type" EntityType="Self.its_cam_type" />
+          <EntitySet Name="its_event_subtype" EntityType="Self.its_event_subtype" />
+          <EntitySet Name="its_event_type" EntityType="Self.its_event_type" />
+          <EntitySet Name="its_ipdec_session" EntityType="Self.its_ipdec_session" />
+          <EntitySet Name="its_ipdec_sources" EntityType="Self.its_ipdec_sources" />
+          <EntitySet Name="its_nvr_videostorage" EntityType="Self.its_nvr_videostorage" />
+          <EntitySet Name="its_speed_cam" EntityType="Self.its_speed_cam" />
+          <EntitySet Name="its_user_role_action" EntityType="Self.its_user_role_action" />
+          <EntitySet Name="its_vehicle" EntityType="Self.its_vehicle" />
+          <EntitySet Name="its_video_processor" EntityType="Self.its_video_processor" />
+          <FunctionImport Name="Get_CameraUrl">
+            <Parameter Name="eventtype" Mode="In" Type="SByte" />
+            <Parameter Name="camid" Mode="In" Type="String" />
+            <Parameter Name="timeget" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_checkAccount">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getAllCamera" />
+          <FunctionImport Name="sp_GetCambyID">
+          <Parameter Name="Idcam" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllCamera" ReturnType="Collection(cctvModel.ComplexType1)" />
+          <EntitySet Name="its_vms" EntityType="cctvModel.its_vms" />
+          <EntitySet Name="its_vms_resource" EntityType="cctvModel.its_vms_resource" />
+          <EntitySet Name="its_vms_resource_type" EntityType="cctvModel.its_vms_resource_type" />
+          <EntitySet Name="its_vms_type" EntityType="cctvModel.its_vms_type" />
+          <EntitySet Name="its_event_axis" EntityType="cctvModel.its_event_axis" />
+          <EntitySet Name="its_video_processing" EntityType="cctvModel.its_video_processing" />
+          <FunctionImport Name="sp_GetAllVms_Resource" />
+        </EntityContainer>
+        <ComplexType Name="ComplexType1">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="SByte" Name="type" Nullable="false" />
+          <Property Type="String" Name="ip" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cameraurl" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="group_name" MaxLength="255" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="its_vms">
+          <Key>
+            <PropertyRef Name="ip" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ip" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="port" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="width" Type="Double" />
+          <Property Name="height" Type="Double" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_vms_resource">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="nameimage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_vms_resource_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_vms_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_event_axis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="Int64" Nullable="false" />
+          <Property Name="cameraid" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="timebegin" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="timeend" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="imgurl" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="its_video_processing">
+          <Key>
+            <PropertyRef Name="camera_id" />
+          </Key>
+          <Property Name="video_processor_ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="stream_index" Type="Int32" />
+          <Property Name="camera_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int64" />
+          <Property Name="video_output_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="image_output_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cctvModelStoreContainer" CdmEntityContainer="cctvEntities">
+          <EntitySetMapping Name="its_cam">
+            <EntityTypeMapping TypeName="cctvModel.its_cam">
+              <MappingFragment StoreEntitySet="its_cam">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="viewurl" ColumnName="viewurl" />
+                <ScalarProperty Name="recordurl" ColumnName="recordurl" />
+                <ScalarProperty Name="cameraurl" ColumnName="cameraurl" />
+                <ScalarProperty Name="recordmode" ColumnName="recordmode" />
+                <ScalarProperty Name="cliplength" ColumnName="cliplength" />
+                <ScalarProperty Name="clipremovetime" ColumnName="clipremovetime" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="nvr_ip" ColumnName="nvr_ip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_cam_group">
+            <EntityTypeMapping TypeName="cctvModel.its_cam_group">
+              <MappingFragment StoreEntitySet="its_cam_group">
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_event">
+            <EntityTypeMapping TypeName="cctvModel.its_event">
+              <MappingFragment StoreEntitySet="its_event">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="subtype" ColumnName="subtype" />
+                <ScalarProperty Name="cameraid" ColumnName="cameraid" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="imgurl1" ColumnName="imgurl1" />
+                <ScalarProperty Name="imgurl2" ColumnName="imgurl2" />
+                <ScalarProperty Name="imgurl3" ColumnName="imgurl3" />
+                <ScalarProperty Name="videourl" ColumnName="videourl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_event_info">
+            <EntityTypeMapping TypeName="cctvModel.its_event_info">
+              <MappingFragment StoreEntitySet="its_event_info">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lane" ColumnName="lane" />
+                <ScalarProperty Name="speed" ColumnName="speed" />
+                <ScalarProperty Name="occupancy" ColumnName="occupancy" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="classes" ColumnName="classes" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="class_vehicle" ColumnName="class_vehicle" />
+                <ScalarProperty Name="method" ColumnName="method" />
+                <ScalarProperty Name="density" ColumnName="density" />
+                <ScalarProperty Name="v85" ColumnName="v85" />
+                <ScalarProperty Name="class_traffic_flow" ColumnName="class_traffic_flow" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="period" ColumnName="period" />
+                <ScalarProperty Name="anpr" ColumnName="anpr" />
+                <ScalarProperty Name="anpr_confidence" ColumnName="anpr_confidence" />
+                <ScalarProperty Name="traffic_class_confidence" ColumnName="traffic_class_confidence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_event_lookup_car">
+            <EntityTypeMapping TypeName="cctvModel.its_event_lookup_car">
+              <MappingFragment StoreEntitySet="its_event_lookup_car">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="vehicle_group" ColumnName="vehicle_group" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="vitype" ColumnName="vitype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_event_source">
+            <EntityTypeMapping TypeName="cctvModel.its_event_source">
+              <MappingFragment StoreEntitySet="its_event_source">
+                <ScalarProperty Name="cam_id" ColumnName="cam_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="video_processor_ip" ColumnName="video_processor_ip" />
+                <ScalarProperty Name="video_output_url" ColumnName="video_output_url" />
+                <ScalarProperty Name="image_output_url" ColumnName="image_output_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_ipdec_screen">
+            <EntityTypeMapping TypeName="cctvModel.its_ipdec_screen">
+              <MappingFragment StoreEntitySet="its_ipdec_screen">
+                <ScalarProperty Name="screenid" ColumnName="screenid" />
+                <ScalarProperty Name="layout" ColumnName="layout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_login">
+            <EntityTypeMapping TypeName="cctvModel.its_login">
+              <MappingFragment StoreEntitySet="its_login">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="currenttime" ColumnName="currenttime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_nvr">
+            <EntityTypeMapping TypeName="cctvModel.its_nvr">
+              <MappingFragment StoreEntitySet="its_nvr">
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="writemode" ColumnName="writemode" />
+                <ScalarProperty Name="port" ColumnName="port" />
+                <ScalarProperty Name="max_input" ColumnName="max_input" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_user">
+            <EntityTypeMapping TypeName="cctvModel.its_user">
+              <MappingFragment StoreEntitySet="its_user">
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="currenttime" ColumnName="currenttime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_user_action">
+            <EntityTypeMapping TypeName="cctvModel.its_user_action">
+              <MappingFragment StoreEntitySet="its_user_action">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="action" ColumnName="action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_user_role">
+            <EntityTypeMapping TypeName="cctvModel.its_user_role">
+              <MappingFragment StoreEntitySet="its_user_role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_vehicle_group">
+            <EntityTypeMapping TypeName="cctvModel.its_vehicle_group">
+              <MappingFragment StoreEntitySet="its_vehicle_group">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_vos_sources">
+            <EntityTypeMapping TypeName="cctvModel.its_vos_sources">
+              <MappingFragment StoreEntitySet="its_vos_sources">
+                <ScalarProperty Name="cameraip" ColumnName="cameraip" />
+                <ScalarProperty Name="inputurl" ColumnName="inputurl" />
+                <ScalarProperty Name="inputname" ColumnName="inputname" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="outputurl" ColumnName="outputurl" />
+                <ScalarProperty Name="outputframewidth" ColumnName="outputframewidth" />
+                <ScalarProperty Name="outputframeheight" ColumnName="outputframeheight" />
+                <ScalarProperty Name="outputcodec" ColumnName="outputcodec" />
+                <ScalarProperty Name="outputframerate" ColumnName="outputframerate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_vos_text_position">
+            <EntityTypeMapping TypeName="cctvModel.its_vos_text_position">
+              <MappingFragment StoreEntitySet="its_vos_text_position">
+                <ScalarProperty Name="laneidpos" ColumnName="laneidpos" />
+                <ScalarProperty Name="staffnamepos" ColumnName="staffnamepos" />
+                <ScalarProperty Name="timestamppos" ColumnName="timestamppos" />
+                <ScalarProperty Name="vehicleclasspos" ColumnName="vehicleclasspos" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="platenumber" ColumnName="platenumber" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_cam_type">
+            <EntityTypeMapping TypeName="cctvModel.its_cam_type">
+              <MappingFragment StoreEntitySet="its_cam_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_event_subtype">
+            <EntityTypeMapping TypeName="cctvModel.its_event_subtype">
+              <MappingFragment StoreEntitySet="its_event_subtype">
+                <ScalarProperty Name="event_type" ColumnName="event_type" />
+                <ScalarProperty Name="subevent_id" ColumnName="subevent_id" />
+                <ScalarProperty Name="subevent_name" ColumnName="subevent_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_event_type">
+            <EntityTypeMapping TypeName="cctvModel.its_event_type">
+              <MappingFragment StoreEntitySet="its_event_type">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="term" ColumnName="term" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_ipdec_session">
+            <EntityTypeMapping TypeName="cctvModel.its_ipdec_session">
+              <MappingFragment StoreEntitySet="its_ipdec_session">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="screenid" ColumnName="screenid" />
+                <ScalarProperty Name="position" ColumnName="position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_ipdec_sources">
+            <EntityTypeMapping TypeName="cctvModel.its_ipdec_sources">
+              <MappingFragment StoreEntitySet="its_ipdec_sources">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="sessioncount" ColumnName="sessioncount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_nvr_videostorage">
+            <EntityTypeMapping TypeName="cctvModel.its_nvr_videostorage">
+              <MappingFragment StoreEntitySet="its_nvr_videostorage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="filesize" ColumnName="filesize" />
+                <ScalarProperty Name="ts" ColumnName="ts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_speed_cam">
+            <EntityTypeMapping TypeName="cctvModel.its_speed_cam">
+              <MappingFragment StoreEntitySet="its_speed_cam">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="power" ColumnName="power" />
+                <ScalarProperty Name="network" ColumnName="network" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_user_role_action">
+            <EntityTypeMapping TypeName="cctvModel.its_user_role_action">
+              <MappingFragment StoreEntitySet="its_user_role_action">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_vehicle">
+            <EntityTypeMapping TypeName="cctvModel.its_vehicle">
+              <MappingFragment StoreEntitySet="its_vehicle">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_video_processor">
+            <EntityTypeMapping TypeName="cctvModel.its_video_processor">
+              <MappingFragment StoreEntitySet="its_video_processor">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="config_port" ColumnName="config_port" />
+                <ScalarProperty Name="stream_number" ColumnName="stream_number" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Get_CameraUrl" FunctionName="cctvModel.Store.Get_CameraUrl" />
+          <FunctionImportMapping FunctionImportName="sp_checkAccount" FunctionName="cctvModel.Store.sp_checkAccount" />
+          <FunctionImportMapping FunctionImportName="sp_getAllCamera" FunctionName="cctvModel.Store.sp_getAllCamera" />
+          <FunctionImportMapping FunctionImportName="sp_GetCambyID" FunctionName="cctvModel.Store.sp_GetCambyID" />
+          <FunctionImportMapping FunctionImportName="GetAllCamera" FunctionName="cctvModel.Store.sp_getAllCamera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="cctvModel.ComplexType1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="cameraurl" ColumnName="cameraurl" />
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="its_vms">
+            <EntityTypeMapping TypeName="cctvModel.its_vms">
+              <MappingFragment StoreEntitySet="its_vms">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="port" ColumnName="port" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_vms_resource">
+            <EntityTypeMapping TypeName="cctvModel.its_vms_resource">
+              <MappingFragment StoreEntitySet="its_vms_resource">
+                <ScalarProperty Name="nameimage" ColumnName="nameimage" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_vms_resource_type">
+            <EntityTypeMapping TypeName="cctvModel.its_vms_resource_type">
+              <MappingFragment StoreEntitySet="its_vms_resource_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_vms_type">
+            <EntityTypeMapping TypeName="cctvModel.its_vms_type">
+              <MappingFragment StoreEntitySet="its_vms_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_event_axis">
+            <EntityTypeMapping TypeName="cctvModel.its_event_axis">
+              <MappingFragment StoreEntitySet="its_event_axis">
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="timeend" ColumnName="timeend" />
+                <ScalarProperty Name="timebegin" ColumnName="timebegin" />
+                <ScalarProperty Name="cameraid" ColumnName="cameraid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="its_video_processing">
+            <EntityTypeMapping TypeName="cctvModel.its_video_processing">
+              <MappingFragment StoreEntitySet="its_video_processing">
+                <ScalarProperty Name="image_output_url" ColumnName="image_output_url" />
+                <ScalarProperty Name="video_output_url" ColumnName="video_output_url" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="camera_id" ColumnName="camera_id" />
+                <ScalarProperty Name="stream_index" ColumnName="stream_index" />
+                <ScalarProperty Name="video_processor_ip" ColumnName="video_processor_ip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetAllVms_Resource" FunctionName="cctvModel.Store.sp_GetAllVms_Resource" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

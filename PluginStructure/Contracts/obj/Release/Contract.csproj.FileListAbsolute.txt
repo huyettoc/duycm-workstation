@@ -1,0 +1,7 @@
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\Contracts\bin\Release\Contract.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\Contracts\bin\Release\Contract.pdb
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\Contracts\obj\Release\Contract.csprojResolveAssemblyReference.cache
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\Contracts\obj\Release\Contract.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\Contracts\obj\Release\Contract.pdb
+E:\Work\SourceCode\ITSWorkStation\Output\Contracts\Contract.dll
+E:\Work\SourceCode\ITSWorkStation\Output\Contracts\Contract.pdb

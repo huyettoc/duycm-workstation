@@ -1,0 +1,7 @@
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInSideAdapter\bin\Release\AddInSideAdapter.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInSideAdapter\bin\Release\AddInSideAdapter.pdb
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInSideAdapter\obj\Release\AddInSideAdapter.csprojResolveAssemblyReference.cache
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInSideAdapter\obj\Release\AddInSideAdapter.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\AddInSideAdapter\obj\Release\AddInSideAdapter.pdb
+E:\Work\SourceCode\ITSWorkStation\Output\AddInSideAdapters\AddInSideAdapter.dll
+E:\Work\SourceCode\ITSWorkStation\Output\AddInSideAdapters\AddInSideAdapter.pdb

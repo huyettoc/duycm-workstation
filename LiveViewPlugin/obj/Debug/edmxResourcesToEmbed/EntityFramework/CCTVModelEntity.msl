@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="cctvModelStoreContainer" CdmEntityContainer="cctvEntities">
+    <EntitySetMapping Name="its_cam">
+      <EntityTypeMapping TypeName="cctvModel.its_cam">
+        <MappingFragment StoreEntitySet="its_cam">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="recordurl" ColumnName="recordurl" />
+          <ScalarProperty Name="cameraurl" ColumnName="cameraurl" />
+          <ScalarProperty Name="cliplength" ColumnName="cliplength" />
+          <ScalarProperty Name="clipremovetime" ColumnName="clipremovetime" />
+          <ScalarProperty Name="user" ColumnName="user" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="currenttime" ColumnName="currenttime" />
+          <ScalarProperty Name="eventmode" ColumnName="eventmode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_event">
+      <EntityTypeMapping TypeName="cctvModel.its_event">
+        <MappingFragment StoreEntitySet="its_event">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="cameraid" ColumnName="cameraid" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="imgurl1" ColumnName="imgurl1" />
+          <ScalarProperty Name="imgurl2" ColumnName="imgurl2" />
+          <ScalarProperty Name="imgurl3" ColumnName="imgurl3" />
+          <ScalarProperty Name="videourl" ColumnName="videourl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_event_info">
+      <EntityTypeMapping TypeName="cctvModel.its_event_info">
+        <MappingFragment StoreEntitySet="its_event_info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="lane" ColumnName="lane" />
+          <ScalarProperty Name="speed" ColumnName="speed" />
+          <ScalarProperty Name="occupancy" ColumnName="occupancy" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="class_vehicle" ColumnName="class_vehicle" />
+          <ScalarProperty Name="method" ColumnName="method" />
+          <ScalarProperty Name="density" ColumnName="density" />
+          <ScalarProperty Name="v85" ColumnName="v85" />
+          <ScalarProperty Name="class_traffic_flow" ColumnName="class_traffic_flow" />
+          <ScalarProperty Name="class_trafficclass" ColumnName="class_trafficclass" />
+          <ScalarProperty Name="incident" ColumnName="incident" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="desc_period" ColumnName="desc_period" />
+          <ScalarProperty Name="anpr" ColumnName="anpr" />
+          <ScalarProperty Name="anpr_confidence" ColumnName="anpr_confidence" />
+          <ScalarProperty Name="adr_text" ColumnName="adr_text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_ipdec_screen">
+      <EntityTypeMapping TypeName="cctvModel.its_ipdec_screen">
+        <MappingFragment StoreEntitySet="its_ipdec_screen">
+          <ScalarProperty Name="screenid" ColumnName="screenid" />
+          <ScalarProperty Name="layout" ColumnName="layout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_login">
+      <EntityTypeMapping TypeName="cctvModel.its_login">
+        <MappingFragment StoreEntitySet="its_login">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="currenttime" ColumnName="currenttime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_user">
+      <EntityTypeMapping TypeName="cctvModel.its_user">
+        <MappingFragment StoreEntitySet="its_user">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="currenttime" ColumnName="currenttime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_vos_sources">
+      <EntityTypeMapping TypeName="cctvModel.its_vos_sources">
+        <MappingFragment StoreEntitySet="its_vos_sources">
+          <ScalarProperty Name="cameraip" ColumnName="cameraip" />
+          <ScalarProperty Name="inputurl" ColumnName="inputurl" />
+          <ScalarProperty Name="inputname" ColumnName="inputname" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="outputurl" ColumnName="outputurl" />
+          <ScalarProperty Name="outputframewidth" ColumnName="outputframewidth" />
+          <ScalarProperty Name="outputframeheight" ColumnName="outputframeheight" />
+          <ScalarProperty Name="outputcodec" ColumnName="outputcodec" />
+          <ScalarProperty Name="outputframerate" ColumnName="outputframerate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_vos_text_position">
+      <EntityTypeMapping TypeName="cctvModel.its_vos_text_position">
+        <MappingFragment StoreEntitySet="its_vos_text_position">
+          <ScalarProperty Name="laneidpos" ColumnName="laneidpos" />
+          <ScalarProperty Name="staffnamepos" ColumnName="staffnamepos" />
+          <ScalarProperty Name="timestamppos" ColumnName="timestamppos" />
+          <ScalarProperty Name="vehicleclasspos" ColumnName="vehicleclasspos" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="platenumber" ColumnName="platenumber" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_cam_group">
+      <EntityTypeMapping TypeName="cctvModel.its_cam_group">
+        <MappingFragment StoreEntitySet="its_cam_group">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_cam_type">
+      <EntityTypeMapping TypeName="cctvModel.its_cam_type">
+        <MappingFragment StoreEntitySet="its_cam_type">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_event_type">
+      <EntityTypeMapping TypeName="cctvModel.its_event_type">
+        <MappingFragment StoreEntitySet="its_event_type">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_ipdec_session">
+      <EntityTypeMapping TypeName="cctvModel.its_ipdec_session">
+        <MappingFragment StoreEntitySet="its_ipdec_session">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="screenid" ColumnName="screenid" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_ipdec_sources">
+      <EntityTypeMapping TypeName="cctvModel.its_ipdec_sources">
+        <MappingFragment StoreEntitySet="its_ipdec_sources">
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="sessioncount" ColumnName="sessioncount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_nvr">
+      <EntityTypeMapping TypeName="cctvModel.its_nvr">
+        <MappingFragment StoreEntitySet="its_nvr">
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="writemode" ColumnName="writemode" />
+          <ScalarProperty Name="currenttime" ColumnName="currenttime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="its_nvr_videostorage">
+      <EntityTypeMapping TypeName="cctvModel.its_nvr_videostorage">
+        <MappingFragment StoreEntitySet="its_nvr_videostorage">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="starttime" ColumnName="starttime" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="filesize" ColumnName="filesize" />
+          <ScalarProperty Name="ts" ColumnName="ts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_checkAccount" FunctionName="cctvModel.Store.sp_checkAccount" />
+    <FunctionImportMapping FunctionImportName="sp_getAllCamera" FunctionName="cctvModel.Store.sp_getAllCamera">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="cctvModel.ComplexType1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cameraurl" ColumnName="cameraurl" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

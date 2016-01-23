@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BE675BEB-A66A-4BFD-8988-2313BDF2D380}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ITSWorkStation</RootNamespace>
+    <AssemblyName>ITSWorkStation</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cctv-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.NavBar.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\ITSEmapView\Dlls\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF5, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="protobuf-net">
+      <HintPath>..\Libs\Dlls\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AddIn" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MahApps.Metro.0.14.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="EntityFramework\CCTVModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CCTVModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\CCTVModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\CCTVModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CCTVModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ComplexType1.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ComplexType2.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_cam.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_cam_group.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_cam_type.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_axis.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_info.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_lookup_car.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_source.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_subtype.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_event_type.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_ipdec_screen.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_ipdec_session.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_ipdec_sources.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_login.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_nvr.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_nvr_videostorage.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_speed_cam.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_action.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_cam.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_role.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_user_role_action.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vehicle.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vehicle_group.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_video_processing.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_video_processor.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms_resource.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms_resource_type.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vms_type.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vos_sources.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\its_vos_text_position.cs">
+      <DependentUpon>CCTVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Z119Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Z119Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Z119Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Z119Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Z119Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Z119Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Libs\DwayneNeed\VisualTargetPresentationSource.cs" />
+    <Compile Include="Libs\DwayneNeed\VisualWrapper.cs" />
+    <Compile Include="Libs\NotificationButton\ManNotificationButton.cs" />
+    <Compile Include="Message\MultiCastMessage.cs" />
+    <Compile Include="Model\CameraGroup.cs" />
+    <Compile Include="Model\CameraItem.cs" />
+    <Compile Include="Utils\Account.cs" />
+    <Compile Include="Utils\ClientUdp.cs" />
+    <Compile Include="Utils\RemoveChildHelper.cs" />
+    <Compile Include="Utils\ResourceUtil.cs" />
+    <Compile Include="Utils\TreeViewItemBehavior.cs" />
+    <Compile Include="ViewModel\CameraGroupViewModel.cs" />
+    <Compile Include="ViewModel\CameraItemViewModel.cs" />
+    <Compile Include="ViewModel\HighCameraGroupViewModel.cs" />
+    <Compile Include="ViewModel\ScreenTypeViewModel.cs" />
+    <Compile Include="ViewModel\VideoScreenViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\CentreScreenVideo.xaml.cs">
+      <DependentUpon>CentreScreenVideo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FullScreen.xaml.cs">
+      <DependentUpon>FullScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LiveViewUsercontrol.xaml.cs">
+      <DependentUpon>LiveViewUsercontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SpecScreenOne.xaml.cs">
+      <DependentUpon>SpecScreenOne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VideoScreenUserControl.xaml.cs">
+      <DependentUpon>VideoScreenUserControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\AutoScrollListBoxDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CommonTreeViewStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\NavBarTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CentreScreenVideo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\FullScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LiveViewUsercontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SpecScreenOne.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\VideoScreenUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="EntityFramework\Z119Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Z119Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="EntityFramework\CCTVModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CCTVModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityFramework\CCTVModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CCTVModel.edmx</DependentUpon>
+      <LastGenOutput>CCTVModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EntityFramework\CCTVModel.edmx.diagram">
+      <DependentUpon>CCTVModel.edmx</DependentUpon>
+    </None>
+    <None Include="EntityFramework\CCTVModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CCTVModel.edmx</DependentUpon>
+      <LastGenOutput>CCTVModel.cs</LastGenOutput>
+    </None>
+    <None Include="EntityFramework\Z119Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Z119Model.edmx</DependentUpon>
+      <LastGenOutput>Z119Model.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EntityFramework\Z119Model.edmx.diagram">
+      <DependentUpon>Z119Model.edmx</DependentUpon>
+    </None>
+    <None Include="EntityFramework\Z119Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Z119Model.edmx</DependentUpon>
+      <LastGenOutput>Z119Model.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CheckMarkBlack.png" />
+    <Resource Include="Images\KeyComputer.png" />
+    <Resource Include="Images\XBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\usericon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\folderclosed.png" />
+    <Resource Include="Images\openfolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Camicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusyIndicatorLib\BusyIndicatorLib.csproj">
+      <Project>{7d150b17-2450-43d2-8f3c-bb01e7b62577}</Project>
+      <Name>BusyIndicatorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libs\AudioPlayerLib\AudioPlayerLib.csproj">
+      <Project>{6f4736d4-24cf-493c-8315-90fb9401ba45}</Project>
+      <Name>AudioPlayerLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libs\NotificationLib\NotificationLib.csproj">
+      <Project>{84655e42-501f-49f6-85f5-8e6cfec94219}</Project>
+      <Name>NotificationLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PluginStructure\HostView\HostView.csproj">
+      <Project>{463596da-0d1b-4eeb-af2a-1b71fa722999}</Project>
+      <Name>HostView</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cctv-icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-bkg_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-down-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-down-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-left-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-left-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-right-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-right-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-up-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-up-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-zin-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-zin-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-zout-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-zout-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\do.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\stop1normalorange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\stop1pressedblue .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\win8Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\xanh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Events\camera-tampering-off.png" />
+    <Resource Include="Images\Events\motionoff.png" />
+    <Resource Include="Images\Events\speaker-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Events\speaker-on.png" />
+    <Resource Include="Images\Events\camera-tampering-on.png" />
+    <Resource Include="Images\Events\motionon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Libs\Media\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Workstationicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\ptz-3-bkg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\home-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Controler\home-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\iconwattermarkone.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

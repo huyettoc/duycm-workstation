@@ -1,0 +1,14 @@
+﻿<Window x:Class="BusyIndicatorLib.BusyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BusyWindow" Height="300" Width="300"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowState="Maximized"
+        ShowInTaskbar="False"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls">
+    <Grid>
+        <Controls:ProgressRing IsActive="True" Foreground="CornflowerBlue"/>
+    </Grid>
+</Window>

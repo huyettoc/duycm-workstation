@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="LiveViewPlugin.View.SpecScreenOne"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:view ="clr-namespace:LiveViewPlugin.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid ShowGridLines="True" Name="grLeftvideo">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--<ContentControl Grid.Row="0" Grid.Column="0" x:Name="ucVideoScreen0"/>
+        <ContentControl Grid.Row="1" Grid.Column="1" x:Name="ucVideoScreen3"/>-->
+        <Grid Grid.Column="1" ShowGridLines="True" Name="grRightvideo">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" ShowGridLines="True" Name="grBottomVideo">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+    </Grid>
+</UserControl>

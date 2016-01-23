@@ -1,0 +1,11 @@
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\HostView\bin\Release\HostView.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\HostView\bin\Release\HostView.pdb
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\HostView\obj\Release\HostView.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\HostView\obj\Release\HostView.pdb
+E:\Work\SourceCode\ITSWorkStation\Output\HostView.dll
+E:\Work\SourceCode\ITSWorkStation\Output\HostView.pdb
+E:\Work\SourceCode\Z119\04.Construction\src\WorkStation\ITSWorkStation\Output\HostView.dll
+E:\Work\SourceCode\Z119\04.Construction\src\WorkStation\ITSWorkStation\Output\HostView.pdb
+E:\Work\SourceCode\Z119\04.Construction\src\WorkStation\ITSWorkStation\PluginStructure\HostView\obj\Release\HostView.dll
+E:\Work\SourceCode\Z119\04.Construction\src\WorkStation\ITSWorkStation\PluginStructure\HostView\obj\Release\HostView.pdb
+E:\Work\SourceCode\Z119\04.Construction\src\WorkStation\ITSWorkStation\PluginStructure\HostView\obj\Release\HostView.csprojResolveAssemblyReference.cache

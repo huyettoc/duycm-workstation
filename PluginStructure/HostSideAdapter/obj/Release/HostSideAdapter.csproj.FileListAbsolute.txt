@@ -1,0 +1,7 @@
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\HostSideAdapter\bin\Release\HostSideAdapter.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\HostSideAdapter\bin\Release\HostSideAdapter.pdb
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\HostSideAdapter\obj\Release\HostSideAdapter.csprojResolveAssemblyReference.cache
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\HostSideAdapter\obj\Release\HostSideAdapter.dll
+E:\Work\SourceCode\ITSWorkStation\PluginStructure\HostSideAdapter\obj\Release\HostSideAdapter.pdb
+E:\Work\SourceCode\ITSWorkStation\Output\HostSideAdapters\HostSideAdapter.dll
+E:\Work\SourceCode\ITSWorkStation\Output\HostSideAdapters\HostSideAdapter.pdb
